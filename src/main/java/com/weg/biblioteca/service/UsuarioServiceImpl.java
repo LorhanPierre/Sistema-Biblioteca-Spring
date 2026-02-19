@@ -5,6 +5,7 @@ import com.weg.biblioteca.repository.UsuarioRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class UsuarioServiceImpl {
@@ -17,5 +18,9 @@ public class UsuarioServiceImpl {
 
     public Usuario salvarUsuario(Usuario user) throws SQLException {
         return usuarioRepositoryImpl.salvarUsuario(user);
+    }
+
+    public List<Usuario> listarUsuario() throws SQLException{
+        return usuarioRepositoryImpl.listarUsuarios();
     }
 }

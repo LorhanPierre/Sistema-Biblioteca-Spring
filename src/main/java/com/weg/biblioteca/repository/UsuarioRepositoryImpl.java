@@ -5,6 +5,8 @@ import com.weg.biblioteca.model.Usuario;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class UsuarioRepositoryImpl {
@@ -28,5 +30,34 @@ public class UsuarioRepositoryImpl {
             }
         }
         throw new RuntimeException("Erro ao salvar o Usúario");
+    }
+
+    public List<Usuario> listarUsuarios() throws SQLException{
+        List<Usuario> usuarios = new ArrayList<>();
+
+        String query = """
+                SELECT
+                id,
+                nome,
+                email
+                FROM usuario
+                """;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.execute();
+
+            ResultSet rs = stmt.getResultSet();
+
+            while(rs.next()){
+                long id = rs.getLong("id");
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+
+                usuarios.add(new Usuario(id,nome,email));
+            }
+        }
+
+        return usuarios;
     }
 }
