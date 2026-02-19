@@ -60,4 +60,61 @@ public class UsuarioRepositoryImpl {
 
         return usuarios;
     }
+
+    public Usuario buscarUsuarioPorId(long idUser) throws SQLException {
+
+        String query = """
+                SELECT
+                id,
+                nome,
+                email
+                FROM usuario
+                WHERE id = ?
+                """;
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setLong(1, idUser);
+            stmt.execute();
+
+            ResultSet rs = stmt.getResultSet();
+
+            if (rs.next()) {
+                long id = rs.getLong("id");
+                String nome = rs.getString("nome");
+                String email = rs.getString("email");
+
+                return new Usuario(id, nome, email);
+            }
+        }
+        throw new RuntimeException("Usuario não encontrado");
+    }
+
+    public void deletarUsuario(long id) throws SQLException{
+
+        String query = """
+                DELETE FROM usuario WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setLong(1,id);
+            stmt.execute();
+        }
+    }
+
+    public void atualizarUsuario(long id,Usuario user) throws SQLException{
+
+        String query = """
+                UPDATE usuario SET nome = ?, email = ? WHERE id = ?
+                """;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1,user.getNomeUsuario());
+            stmt.setString(2,user.getEmail());
+            stmt.setLong(3,id);
+            stmt.execute();
+        }
+    }
 }

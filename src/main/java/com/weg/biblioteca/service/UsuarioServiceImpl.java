@@ -23,4 +23,20 @@ public class UsuarioServiceImpl {
     public List<Usuario> listarUsuario() throws SQLException{
         return usuarioRepositoryImpl.listarUsuarios();
     }
+
+    public void deletarUsuario(long id) throws SQLException{
+        usuarioRepositoryImpl.deletarUsuario(id);
+    }
+
+    public Usuario buscarUsuarioPorId(long id) throws SQLException{
+        return usuarioRepositoryImpl.buscarUsuarioPorId(id);
+    }
+
+    public void atualizarUsuario(long id,Usuario user) throws SQLException{
+        Usuario usuario = usuarioRepositoryImpl.buscarUsuarioPorId(id);
+
+        usuario.update(user.getEmail(),user.getNomeUsuario());
+
+        usuarioRepositoryImpl.atualizarUsuario(id,usuario);
+    }
 }

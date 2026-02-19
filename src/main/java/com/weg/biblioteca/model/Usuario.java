@@ -43,4 +43,13 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void update(String email, String nome){
+        if(!email.isBlank()){
+            this.email = email;
+        }
+        if(!nome.isBlank()){
+            this.nomeUsuario = nome;
+        }
+    }
 }

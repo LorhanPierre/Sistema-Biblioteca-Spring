@@ -34,4 +34,32 @@ public class UsuarioController {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    @GetMapping("/{id}")
+    public Usuario buscarUsuarioPorId(@PathVariable long id){
+        try{
+            return usuarioService.buscarUsuarioPorId(id);
+        }catch (SQLException | RuntimeException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarUsuario(@PathVariable long id){
+        try{
+            usuarioService.deletarUsuario(id);
+        }catch (SQLException | RuntimeException e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @PutMapping("/{id}")
+    public void atualizarUsuario(@PathVariable long id,
+                                 @RequestBody Usuario user){
+        try{
+            usuarioService.atualizarUsuario(id,user);
+        }catch (SQLException | RuntimeException e){
+            throw new RuntimeException();
+        }
+    }
 }
