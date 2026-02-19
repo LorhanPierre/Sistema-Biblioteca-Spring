@@ -54,4 +54,16 @@ public class Livro {
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
+
+    public void update(String titulo, String autor,int anoPublicacao){
+        if(!titulo.isBlank()){
+            this.titulo = titulo;
+        }
+        if(!autor.isBlank()){
+            this.autor = autor;
+        }
+        if(anoPublicacao > 1000 && anoPublicacao < 3000){
+            this.anoPublicacao = anoPublicacao;
+        }
+    }
 }
