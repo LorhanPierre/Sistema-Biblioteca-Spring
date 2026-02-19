@@ -10,7 +10,7 @@ public class Conexao {
     private static final String USER = "root";
     private static final String PSWD = "mysqlPW";
 
-    public Connection conectar() throws SQLException {
+    public static Connection conectar() throws SQLException {
         return DriverManager.getConnection(URL,USER,PSWD);
     }
 }

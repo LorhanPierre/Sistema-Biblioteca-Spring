@@ -1,6 +1,7 @@
 package com.weg.biblioteca.repository;
 
-import com.weg.biblioteca.repository.emprestimo.EmprestimoRepository;
+import org.springframework.stereotype.Repository;
 
-public class EmprestimoRepositoryImpl implements EmprestimoRepository {
+@Repository
+public class EmprestimoRepositoryImpl{
 }

@@ -25,6 +25,9 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
+    public Emprestimo() {
+    }
+
     public long getIdEmprestimo() {
         return idEmprestimo;
     }

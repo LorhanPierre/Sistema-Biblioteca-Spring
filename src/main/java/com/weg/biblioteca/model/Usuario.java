@@ -6,15 +6,18 @@ public class Usuario {
     private String nomeUsuario;
     private String email;
 
+    public Usuario(String nomeUsuario, String email) {
+        this.nomeUsuario = nomeUsuario;
+        this.email = email;
+    }
+
     public Usuario(long idUsuario, String nomeUsuario, String email) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.email = email;
     }
 
-    public Usuario(String nomeUsuario, String email) {
-        this.nomeUsuario = nomeUsuario;
-        this.email = email;
+    public Usuario(){
     }
 
     public long getIdUsuario() {

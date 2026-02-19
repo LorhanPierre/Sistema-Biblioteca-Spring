@@ -20,6 +20,9 @@ public class Livro {
         this.anoPublicacao = anoPublicacao;
     }
 
+    public Livro() {
+    }
+
     public long getIdLivro() {
         return idLivro;
     }
