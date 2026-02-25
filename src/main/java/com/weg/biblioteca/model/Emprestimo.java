@@ -1,5 +1,7 @@
 package com.weg.biblioteca.model;
 
+import com.weg.biblioteca.dto.emprestimo.EmprestimoRequestDTO;
+
 import java.time.LocalDate;
 
 public class Emprestimo {
@@ -66,5 +68,20 @@ public class Emprestimo {
 
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    public void update(Long idLivro,Long idUsuario,LocalDate dataEmprestimo, LocalDate dataDevolucao){
+        if(idLivro != 0){
+            this.idLivro = idLivro;
+        }
+        if(idUsuario != 0){
+            this.idUsuario = idUsuario;
+        }
+        if(dataEmprestimo != null){
+            this.dataEmprestimo = dataEmprestimo;
+        }
+        if(dataDevolucao != null){
+            this.dataDevolucao = dataDevolucao;
+        }
     }
 }
